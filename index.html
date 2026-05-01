@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>sophi's purpose</title>
+    <link rel="canonical" href="https://www.sophispurpose.com/" />
+    <meta property="og:url" content="https://www.sophispurpose.com/" />
+    <meta property="og:title" content="sophi's purpose" />
+    <meta
+      property="og:description"
+      content="A soft personal blog for reflections, creativity, growth, and purpose."
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="brand" href="#studio" aria-label="sophi's purpose home">
+        <img class="brand-logo" src="assets/sophis-purpose-logo.svg" alt="sophi's purpose" />
+      </a>
+      <nav class="nav-links" aria-label="Primary navigation">
+        <a href="#studio">Write</a>
+        <a href="#journal">Journal</a>
+        <a href="#about">About</a>
+      </nav>
+      <a class="nav-button" href="#compose">New post</a>
+    </header>
+
+    <main>
+      <section class="workspace" id="studio" aria-labelledby="workspace-title">
+        <div class="feature-panel">
+          <div class="feature-copy">
+            <img class="hero-logo" src="assets/sophis-purpose-logo.svg" alt="sophi's purpose" />
+            <p class="eyebrow">Personal blog desk</p>
+            <h1 id="workspace-title">A soft place to publish what matters.</h1>
+            <p>
+              Write reflections, creative notes, lessons, dreams, and honest pieces from your life.
+              Keep drafts private until they feel ready, then let them live in your journal.
+            </p>
+          </div>
+
+          <article class="featured-post" aria-labelledby="featuredTitle">
+            <canvas id="heroCanvas" width="1100" height="900"></canvas>
+            <div class="featured-copy">
+              <span id="featuredTheme">Reflection</span>
+              <h2 id="featuredTitle">Becoming Clear</h2>
+              <p id="featuredExcerpt">
+                A note about choosing the life that feels true, even when it asks for patience.
+              </p>
+            </div>
+          </article>
+        </div>
+
+        <aside class="compose-panel" id="compose" aria-labelledby="compose-title">
+          <div class="panel-heading">
+            <p class="eyebrow">New entry</p>
+            <h2 id="compose-title">Write a post</h2>
+          </div>
+
+          <form id="postForm">
+            <label>
+              Title
+              <input id="postTitle" type="text" name="title" placeholder="What I am learning now" required />
+            </label>
+
+            <div class="form-grid">
+              <label>
+                Theme
+                <select id="postTheme" name="theme">
+                  <option>Reflection</option>
+                  <option>Creativity</option>
+                  <option>Growth</option>
+                  <option>Life</option>
+                  <option>Notes</option>
+                </select>
+              </label>
+              <label>
+                Reading time
+                <input id="postReadTime" type="text" name="readTime" placeholder="4 min read" />
+              </label>
+            </div>
+
+            <label>
+              Excerpt
+              <textarea
+                id="postExcerpt"
+                name="excerpt"
+                rows="3"
+                placeholder="A short preview that tells readers what this post holds."
+              ></textarea>
+            </label>
+
+            <label>
+              Post
+              <textarea
+                id="postBody"
+                name="body"
+                rows="8"
+                placeholder="Start writing here..."
+                required
+              ></textarea>
+            </label>
+
+            <label class="switch-line">
+              <input id="postPublished" type="checkbox" checked />
+              <span class="switch"></span>
+              <span>Publish now</span>
+            </label>
+
+            <button class="primary-action" type="submit">Add to blog</button>
+          </form>
+        </aside>
+      </section>
+
+      <section class="journal-section" id="journal" aria-labelledby="journal-title">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">Journal</p>
+            <h2 id="journal-title">Recent posts</h2>
+          </div>
+          <div class="toolbar" aria-label="Blog filters">
+            <button class="filter-button active" type="button" data-filter="All">All</button>
+            <button class="filter-button" type="button" data-filter="Reflection">Reflection</button>
+            <button class="filter-button" type="button" data-filter="Creativity">Creativity</button>
+            <button class="filter-button" type="button" data-filter="Growth">Growth</button>
+          </div>
+        </div>
+
+        <div class="search-row">
+          <input id="searchInput" type="search" placeholder="Search by title, theme, excerpt, or post" />
+          <span id="postCount" aria-live="polite"></span>
+        </div>
+
+        <div class="post-grid" id="postGrid" aria-live="polite"></div>
+      </section>
+
+      <section class="about-section" id="about" aria-labelledby="about-title">
+        <div>
+          <p class="eyebrow">About the blog</p>
+          <h2 id="about-title">sophi's purpose is a home for meaning in progress.</h2>
+        </div>
+        <p>
+          Use this space for essays, journal entries, creative updates, or quiet thoughts. Every
+          post you add is saved in this browser, so you can keep shaping the blog as your voice grows.
+        </p>
+      </section>
+    </main>
+
+    <dialog id="postDialog" aria-labelledby="dialogTitle">
+      <button class="close-dialog" type="button" aria-label="Close post detail">×</button>
+      <div class="dialog-cover">
+        <canvas id="dialogCanvas" width="800" height="900"></canvas>
+      </div>
+      <article class="dialog-body">
+        <p class="eyebrow" id="dialogTheme"></p>
+        <h2 id="dialogTitle"></h2>
+        <p class="dialog-excerpt" id="dialogExcerpt"></p>
+        <div class="dialog-meta">
+          <span id="dialogDate"></span>
+          <span id="dialogReadTime"></span>
+          <span id="dialogStatus"></span>
+        </div>
+        <div class="post-body" id="dialogBody"></div>
+      </article>
+    </dialog>
+
+    <script src="script.js"></script>
+  </body>
+</html>
