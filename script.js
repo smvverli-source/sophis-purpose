@@ -109,7 +109,7 @@ function drawPostCover(canvas, post) {
   ctx.fillStyle = gradient;
   ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-    ctx.fillStyle = "rgba(255, 253, 247, 0.18)";
+  ctx.fillStyle = "rgba(255, 253, 247, 0.18)";
   for (let index = 0; index < 9; index += 1) {
     const width = canvas.width * (0.35 + index * 0.025);
     const height = canvas.height * 0.1;
@@ -278,38 +278,40 @@ function escapeHtml(value) {
     .replaceAll("'", "&#039;");
 }
 
-form.addEventListener("submit", (event) => {
-  event.preventDefault();
+if (form) {
+  form.addEventListener("submit", (event) => {
+    event.preventDefault();
 
-  const title = document.querySelector("#postTitle").value.trim();
-  const theme = document.querySelector("#postTheme").value;
-  const readTime = document.querySelector("#postReadTime").value.trim();
-  const excerpt = document.querySelector("#postExcerpt").value.trim();
-  const body = document.querySelector("#postBody").value.trim();
-  const published = document.querySelector("#postPublished").checked;
+    const title = document.querySelector("#postTitle").value.trim();
+    const theme = document.querySelector("#postTheme").value;
+    const readTime = document.querySelector("#postReadTime").value.trim();
+    const excerpt = document.querySelector("#postExcerpt").value.trim();
+    const body = document.querySelector("#postBody").value.trim();
+    const published = document.querySelector("#postPublished").checked;
 
-  posts = [
-    {
-      id: makeId(),
-      title,
-      theme,
-      readTime: readTime || estimateReadTime(body),
-      date: formatDate(new Date()),
-      excerpt: excerpt || makeExcerpt(body),
-      body,
-      published,
-    },
-    ...posts,
-  ];
+    posts = [
+      {
+        id: makeId(),
+        title,
+        theme,
+        readTime: readTime || estimateReadTime(body),
+        date: formatDate(new Date()),
+        excerpt: excerpt || makeExcerpt(body),
+        body,
+        published,
+      },
+      ...posts,
+    ];
 
-  savePosts();
-  form.reset();
-  document.querySelector("#postPublished").checked = true;
-  activeFilter = "All";
-  filterButtons.forEach((button) => button.classList.toggle("active", button.dataset.filter === "All"));
-  renderPosts();
-  drawHero();
-});
+    savePosts();
+    form.reset();
+    document.querySelector("#postPublished").checked = true;
+    activeFilter = "All";
+    filterButtons.forEach((button) => button.classList.toggle("active", button.dataset.filter === "All"));
+    renderPosts();
+    drawHero();
+  });
+}
 
 filterButtons.forEach((button) => {
   button.addEventListener("click", () => {

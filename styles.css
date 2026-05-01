@@ -58,6 +58,13 @@ a {
   text-decoration: none;
 }
 
+.logo-sprite {
+  position: absolute;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+}
+
 .topbar {
   position: sticky;
   top: 0;
@@ -131,7 +138,7 @@ main {
 .workspace {
   min-height: calc(100vh - 100px);
   display: grid;
-  grid-template-columns: minmax(0, 1.48fr) minmax(340px, 0.66fr);
+  grid-template-columns: 1fr;
   gap: 24px;
   align-items: stretch;
 }
